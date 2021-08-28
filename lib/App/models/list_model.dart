@@ -1,3 +1,4 @@
+
 class HistoryModel {
   final String? foto;
   final String? nome;
@@ -14,3 +15,19 @@ class HistoryModel {
       elenco: json["elenco"],
       descricao: json["descricao"]);
 }
+
+
+
+class RespModel {
+  final String? resp;
+
+  RespModel({this.resp});
+
+  factory RespModel.fromJson(Map<String, dynamic> json) => RespModel(
+      resp: json["resp"],
+      );
+  
+}
+
+
+ 

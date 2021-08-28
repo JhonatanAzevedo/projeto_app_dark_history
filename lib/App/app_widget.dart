@@ -3,6 +3,8 @@ import 'package:application_history_dark/App/list_history.dart';
 import 'package:application_history_dark/App/show_history.dart';
 import 'package:flutter/material.dart';
 
+import 'add_historys.dart';
+
 class Appwidget extends StatelessWidget {
   const Appwidget({Key? key}) : super(key: key);
 
@@ -21,6 +23,7 @@ class Appwidget extends StatelessWidget {
         '/': (context) => HomePage(),
         '/list': (context) => AsHistory(),
         '/historys': (context) => ShowHistory(),
+        '/AddHistory':(context) => AddHistory(),
       },
     );
   }

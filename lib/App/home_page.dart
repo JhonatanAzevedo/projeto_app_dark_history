@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Padding(
             //padding: EdgeInsets.only(left: 0.0, right: 0.0, top: 0.5, bottom: 20)
-            padding: EdgeInsets.only(left: 10, top: 10, bottom: 5),
+            padding: EdgeInsets.only( top: 10, bottom: 5),
             child: Text(
                 "Muito antes da escrita, a humanidade já contava histórias. "
                 "Uma das emoções humanas mais fortes é o medo e quando o vivenciamos em uma situação fictícia "
@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                     textStyle: TextStyle(
                   fontSize: 17,
                   color: Colors.red[500],
-                )),
+                ),),
                 textAlign: TextAlign.center,
               ),
             ),

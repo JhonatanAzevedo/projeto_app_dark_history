@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'models/listModel.dart';
+import 'models/list_model.dart';
 
 class AsHistory extends StatefulWidget {
   @override
@@ -56,7 +55,10 @@ class _AsHistoryState extends State<AsHistory> {
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Material(
                         elevation: 2,
-                        child: ElevatedButton(
+                        // click na historia para ver ela completa
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                              backgroundColor: Colors.grey[500]),
                           onPressed: () {
                             Navigator.of(context).pushNamed('/historys');
                           },
@@ -78,14 +80,21 @@ class _AsHistoryState extends State<AsHistory> {
                 );
               }
               return Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.red,
+                ),
               );
             }),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.red[900],
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pushNamed('/AddHistory');
+        },
       ),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
     );
   }
 }

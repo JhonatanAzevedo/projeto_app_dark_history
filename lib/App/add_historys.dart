@@ -46,11 +46,16 @@ class _AddHistoryState extends State<AddHistory> {
             ),
           ),
         ),
+        
       ),
       body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         color: Colors.grey[400],
         padding: EdgeInsets.all(10),
         child: Column(
+        mainAxisAlignment: MainAxisAlignment.start ,
+        crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             TextField(
               decoration: InputDecoration(
@@ -72,7 +77,7 @@ class _AddHistoryState extends State<AddHistory> {
                       color: Colors.black,
                     ),
                   )),
-              maxLines: 13,
+              maxLines: 4,
               controller: corpoController,
             ),
             SizedBox(height: 10),
@@ -91,7 +96,7 @@ class _AddHistoryState extends State<AddHistory> {
                       color: Colors.red[500],
                     ),
                   ),
-                ))
+                )),
           ],
         ),
       ),

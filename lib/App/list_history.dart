@@ -22,6 +22,7 @@ class _AsHistoryState extends State<AsHistory> {
       throw Exception("erro ao carregar as Historias");
     }
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +39,8 @@ class _AsHistoryState extends State<AsHistory> {
         ),
       ),
       body: Container(
+        /* width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height, */
         color: Colors.black,
         child: FutureBuilder<List>(
             future: listHistory(),
@@ -52,26 +55,33 @@ class _AsHistoryState extends State<AsHistory> {
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
+                      padding: const EdgeInsets.only(
+                        top: 0,
+                      ),
                       child: Material(
-                        elevation: 2,
+                        //elevation: 20,
                         // click na historia para ver ela completa
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                              backgroundColor: Colors.grey[500]),
-                          onPressed: () {
-                            Navigator.of(context).pushNamed('/historys');
-                          },
+                        child: Ink(
+                          color: Colors.grey[900],
                           child: ListTile(
                             title: Text(
                               snapshot.data![index].nome,
+                              style: GoogleFonts.smythe(
+                                textStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontStyle: FontStyle.italic),
+                              ),
                             ),
-                            subtitle: Text(snapshot.data![index].id),
+                            //subtitle: Text(snapshot.data![index].id),
                             leading: CircleAvatar(
                               backgroundColor: Colors.transparent,
                               backgroundImage:
                                   NetworkImage(snapshot.data![index].foto),
                             ),
+                            onTap: () {
+                              Navigator.of(context).pushNamed('/historys');
+                            },
                           ),
                         ),
                       ),
@@ -94,7 +104,7 @@ class _AsHistoryState extends State<AsHistory> {
         },
       ),
       floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniCenterDocked,
+          FloatingActionButtonLocation.miniEndTop,
     );
   }
 }

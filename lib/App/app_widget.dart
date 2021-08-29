@@ -15,9 +15,11 @@ class Appwidget extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.black,
         elevatedButtonTheme: ElevatedButtonThemeData(
-          style: TextButton.styleFrom(backgroundColor: Colors.grey[800]),
+          style: TextButton.styleFrom(backgroundColor: Colors.grey[900]),
         ),
+         
       ),
+      
       initialRoute: '/',
       routes: {
         '/': (context) => HomePage(),

@@ -10,8 +10,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Widget _bory() {
-    return SingleChildScrollView(
+    return SingleChildScrollView( 
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           //imagem da logo
           Image.asset(
@@ -22,13 +24,14 @@ class _HomePageState extends State<HomePage> {
           Text(
             "Por Que Contamos e Gostamos de Histórias de Terror?",
             style: GoogleFonts.eater(
-              textStyle: TextStyle(color: Colors.red[800], fontSize: 20),
+              textStyle: TextStyle(color: Colors.red[800], fontSize: 15),
             ),
             textAlign: TextAlign.center,
           ),
           Padding(
-            //padding: EdgeInsets.only(left: 0.0, right: 0.0, top: 0.5, bottom: 20)
-            padding: EdgeInsets.only( top: 10, bottom: 5),
+           // padding: EdgeInsets.only( top: 10, bottom: 5),
+           padding: EdgeInsets.all(10),
+
             child: Text(
                 "Muito antes da escrita, a humanidade já contava histórias. "
                 "Uma das emoções humanas mais fortes é o medo e quando o vivenciamos em uma situação fictícia "
@@ -58,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                 style: GoogleFonts.eater(
                     textStyle: TextStyle(
                   fontSize: 17,
-                  color: Colors.red[500],
+                  color: Colors.red[800],
                 ),),
                 textAlign: TextAlign.center,
               ),
@@ -72,6 +75,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
         title: Text(
           'Dark Historys',
@@ -83,7 +87,8 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: Stack(children: [
+      body: Stack(
+        children: [
         Container(
           color: Colors.black,
         ),

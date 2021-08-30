@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'add_historys.dart';
 
 class Appwidget extends StatelessWidget {
-  const Appwidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

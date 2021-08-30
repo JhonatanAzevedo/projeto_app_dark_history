@@ -1,11 +1,17 @@
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart' as Get;
 import 'package:google_fonts/google_fonts.dart';
 
-class ShowHistory extends StatelessWidget {
-  const ShowHistory({Key? key}) : super(key: key);
+import 'controller/history_controller.dart';
 
+class ShowHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    
+    final history = Get.Get.put(HistoryController());
+
+
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -26,7 +32,7 @@ class ShowHistory extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: Text(
-                  "vhashvoasgvogao",
+                  "${history.titleHistory.value}",
                   style: TextStyle(
                     color: Colors.red,
                     fontSize: 30,
@@ -39,7 +45,7 @@ class ShowHistory extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: Text(
-                  "sigfsgfogsafgogfo",
+                  "${history.bodyHistory.value}",
                   style: GoogleFonts.marvel(
                     textStyle: TextStyle(
                       color: Colors.red,

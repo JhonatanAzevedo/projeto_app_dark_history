@@ -1,5 +1,8 @@
+import 'package:application_history_dark/App/controller/history_controller.dart';
+import 'package:application_history_dark/App/show_history.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart' as Get;
 import 'package:google_fonts/google_fonts.dart';
 import 'models/list_model.dart';
 
@@ -10,7 +13,7 @@ class AsHistory extends StatefulWidget {
 
 class _AsHistoryState extends State<AsHistory> {
   final dio = Dio();
-
+//funçao de pegar da API
   Future<List<HistoryModel>> listHistory() async {
     try {
       var response =
@@ -22,18 +25,38 @@ class _AsHistoryState extends State<AsHistory> {
       throw Exception("erro ao carregar as Historias");
     }
   }
-  
+
+  //funçao de deletar da API
+  Future<RespModel> deletarHistory(String id) async {
+    final dio = Dio();
+    try {
+      Response response = await dio.delete(
+          'https://still-hollows-82868.herokuapp.com/filme/delete',
+          data: {
+            "id": id,
+          });
+      return RespModel.fromJson(response.data);
+    } catch (e) {
+      rethrow;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final history = Get.Get.put(HistoryController());
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Dark Historys',
-          style: GoogleFonts.eater(
-            textStyle: TextStyle(
-              color: Colors.grey,
-              fontSize: 25,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50),
+        child: AppBar(
+          backgroundColor: Colors.grey[900],
+          title: Text(
+            'Dark Historys',
+            style: GoogleFonts.eater(
+              textStyle: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
             ),
           ),
         ),
@@ -47,7 +70,8 @@ class _AsHistoryState extends State<AsHistory> {
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return Center(
-                  child: Text('Erro ao carregar Historias'),
+                  child: Text('Erro ao carregar Historias',
+                      style: TextStyle(color: Colors.red)),
                 );
               }
               if (snapshot.hasData) {
@@ -56,7 +80,7 @@ class _AsHistoryState extends State<AsHistory> {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(
-                        top: 0,
+                        top: 10,
                       ),
                       child: Material(
                         //elevation: 20,
@@ -73,14 +97,29 @@ class _AsHistoryState extends State<AsHistory> {
                                     fontStyle: FontStyle.italic),
                               ),
                             ),
-                            //subtitle: Text(snapshot.data![index].id),
                             leading: CircleAvatar(
                               backgroundColor: Colors.transparent,
                               backgroundImage:
                                   NetworkImage(snapshot.data![index].foto),
                             ),
+                            trailing: IconButton(
+                              icon: Icon(Icons.delete),
+                              color: Colors.red,
+                              onPressed: () async {
+                                final id = snapshot.data![index].id;
+                                await deletarHistory(id);
+                              },
+                            ),
                             onTap: () {
-                              Navigator.of(context).pushNamed('/historys');
+                              final titulo = snapshot.data![index].nome;
+                              final corpo = snapshot.data![index].descricao;
+
+                              history.setHistory(titulo, corpo);
+
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ShowHistory()));
                             },
                           ),
                         ),
@@ -103,8 +142,7 @@ class _AsHistoryState extends State<AsHistory> {
           Navigator.of(context).pushNamed('/AddHistory');
         },
       ),
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniEndTop,
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndTop,
     );
   }
 }

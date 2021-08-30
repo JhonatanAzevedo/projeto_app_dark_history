@@ -76,13 +76,17 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       
-      appBar: AppBar(
-        title: Text(
-          'Dark Historys',
-          style: GoogleFonts.eater(
-            textStyle: TextStyle(
-              color: Colors.grey,
-              fontSize: 25,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50),
+        child: AppBar(
+          backgroundColor: Colors.grey[900],
+          title: Text(
+            'Dark Historys',
+            style: GoogleFonts.eater(
+              textStyle: TextStyle(
+                color: Colors.white,
+                fontSize: 20
+              ),
             ),
           ),
         ),

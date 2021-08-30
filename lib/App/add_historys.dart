@@ -36,17 +36,33 @@ class _AddHistoryState extends State<AddHistory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Dark Historys',
-          style: GoogleFonts.eater(
-            textStyle: TextStyle(
-              color: Colors.grey,
-              fontSize: 25,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50),
+        child: AppBar(
+          backgroundColor: Colors.grey[900],
+          title: Text(
+            'Adicionar uma História',
+            style: GoogleFonts.eater(
+              textStyle: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+              ),
             ),
           ),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.save),
+              onPressed: () async {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Historia adicionada')));
+                final titulo = tituloController.text;
+                final corpo = corpoController.text;
+                await addHistorys(titulo, corpo);
+                Navigator.of(context).pushReplacementNamed('/list');
+              },
+            )
+          ],
         ),
-        
       ),
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -54,8 +70,8 @@ class _AddHistoryState extends State<AddHistory> {
         color: Colors.grey[400],
         padding: EdgeInsets.all(10),
         child: Column(
-        mainAxisAlignment: MainAxisAlignment.start ,
-        crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             TextField(
               decoration: InputDecoration(
@@ -77,16 +93,16 @@ class _AddHistoryState extends State<AddHistory> {
                       color: Colors.black,
                     ),
                   )),
-              maxLines: 4,
+              maxLines: 6,
               controller: corpoController,
             ),
-            SizedBox(height: 10),
-            ElevatedButton(
+            // SizedBox(height: 10),
+            /*  ElevatedButton(
                 onPressed: () async {
                   final titulo = tituloController.text;
                   final corpo = corpoController.text;
                   await addHistorys(titulo, corpo);
-                  Navigator.of(context).pushNamed('/list');
+                  Navigator.of(context).pushReplacementNamed('/list');
                 },
                 child: Text(
                   "Postar História",
@@ -96,7 +112,7 @@ class _AddHistoryState extends State<AddHistory> {
                       color: Colors.red[500],
                     ),
                   ),
-                )),
+                )), */
           ],
         ),
       ),

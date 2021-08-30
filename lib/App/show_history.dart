@@ -19,7 +19,7 @@ class ShowHistory extends StatelessWidget {
             style: GoogleFonts.eater(
               textStyle: TextStyle(
                 color: Colors.grey,
-                fontSize: 25,
+                fontSize: 20,
               ),
             ),
           ),

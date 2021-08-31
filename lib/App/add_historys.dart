@@ -23,7 +23,7 @@ class _AddHistoryState extends State<AddHistory> {
         "nome": nome,
         "descricao": descricao,
         "foto":
-            "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b7c38e83-4208-43a2-b29c-8c8927839554/d6t72g7-9d04b6c1-0367-408e-9c8c-fa3df60a98f2.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2I3YzM4ZTgzLTQyMDgtNDNhMi1iMjljLThjODkyNzgzOTU1NFwvZDZ0NzJnNy05ZDA0YjZjMS0wMzY3LTQwOGUtOWM4Yy1mYTNkZjYwYTk4ZjIuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.f8fpJ8YhIWKLbSo_ZuYaKyUJ8g1L7rT5HDXOjXgc2Gk",
+            "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a6b9cb17-f537-4ec9-9cac-3dcba55f5584/d75j1tf-5ce10b3b-8599-4a28-b252-4df6351d2f2d.jpg/v1/fill/w_1024,h_1375,q_75,strp/terror_by_priestofterror_d75j1tf-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTM3NSIsInBhdGgiOiJcL2ZcL2E2YjljYjE3LWY1MzctNGVjOS05Y2FjLTNkY2JhNTVmNTU4NFwvZDc1ajF0Zi01Y2UxMGIzYi04NTk5LTRhMjgtYjI1Mi00ZGY2MzUxZDJmMmQuanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.6JawFvTB--OUW06z0kIvq0tawgno2pMQp3SIVC4HbfU",
         "elenco": "-",
       });
 

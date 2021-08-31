@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
             textAlign: TextAlign.center,
           ),
           Padding(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.only(top:10, bottom: 10, left: 15, right: 15),
 
             child: Text(
                 "Muito antes da escrita, a humanidade já contava histórias. "

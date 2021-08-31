@@ -54,7 +54,7 @@ class ShowHistory extends StatelessWidget {
         
                 // CORPO DA HISTORIA
                 Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.only(top:10, bottom: 10, left: 15, right: 15),
                   child: Text("${history.bodyHistory.value}",
                       style: GoogleFonts.smythe(
                         textStyle: TextStyle(

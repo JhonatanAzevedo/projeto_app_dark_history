@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' as Get;
 import 'package:google_fonts/google_fonts.dart';
@@ -8,54 +7,68 @@ import 'controller/history_controller.dart';
 class ShowHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
     final history = Get.Get.put(HistoryController());
 
-
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Dark Historys',
-            style: GoogleFonts.eater(
+      appBar: AppBar(
+        backgroundColor: Colors.grey[900],
+        title: Text(
+          'Dark Historys',
+          style: GoogleFonts.eater(
               textStyle: TextStyle(
-                color: Colors.grey,
+                color: Colors.white,
                 fontSize: 20,
-              ),
             ),
           ),
         ),
-        body: Container(
-          color: Colors.black,
-          child: ListView(
-            //Titulo do Texto
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text(
-                  "${history.titleHistory.value}",
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 30,
+      ),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        color: Colors.black,
+        child: ListView(
+          children: 
+            [Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 10),
+                  child: Container(
+                    width: 200,
+                    height: 300,
+                    child: Image.network("${history.fotoHistory.value}",
+                        fit: BoxFit.fill),
                   ),
-                  textAlign: TextAlign.center,
                 ),
-              ),
-
-              // Corpo do Texto
-              Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: Text(
-                  "${history.bodyHistory.value}",
-                  style: GoogleFonts.marvel(
-                    textStyle: TextStyle(
-                      color: Colors.red,
-                      fontSize: 30,
+        
+                //TITULO DA HISTORIA
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Text(
+                    "${history.titleHistory.value}",
+                    style: GoogleFonts.eater(
+                      textStyle: TextStyle(color: Colors.red[800], fontSize: 20),
                     ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-              )
-            ],
-          ),
-        ));
+        
+                // CORPO DA HISTORIA
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Text("${history.bodyHistory.value}",
+                      style: GoogleFonts.smythe(
+                        textStyle: TextStyle(
+                            color: Colors.grey[600],
+                            fontSize: 27,
+                            fontStyle: FontStyle.italic),
+                      ),
+                      textAlign: TextAlign.justify),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

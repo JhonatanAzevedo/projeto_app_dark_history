@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Widget _bory() {
-    return SingleChildScrollView( 
+    return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -29,8 +29,7 @@ class _HomePageState extends State<HomePage> {
             textAlign: TextAlign.center,
           ),
           Padding(
-           // padding: EdgeInsets.only( top: 10, bottom: 5),
-           padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(10),
 
             child: Text(
                 "Muito antes da escrita, a humanidade já contava histórias. "
@@ -55,14 +54,14 @@ class _HomePageState extends State<HomePage> {
                   '/list'); //<= usando o pushNamed ele vem com botam de volta
             },
             child: Container(
-              
               child: Text(
                 'TODAS HISTORIAS',
                 style: GoogleFonts.eater(
-                    textStyle: TextStyle(
-                  fontSize: 17,
-                  color: Colors.red[800],
-                ),),
+                  textStyle: TextStyle(
+                    fontSize: 17,
+                    color: Colors.red[800],
+                  ),
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -75,7 +74,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50),
         child: AppBar(
@@ -83,16 +81,12 @@ class _HomePageState extends State<HomePage> {
           title: Text(
             'Dark Historys',
             style: GoogleFonts.eater(
-              textStyle: TextStyle(
-                color: Colors.white,
-                fontSize: 20
-              ),
+              textStyle: TextStyle(color: Colors.white, fontSize: 20),
             ),
           ),
         ),
       ),
-      body: Stack(
-        children: [
+      body: Stack(children: [
         Container(
           color: Colors.black,
         ),
@@ -101,4 +95,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-

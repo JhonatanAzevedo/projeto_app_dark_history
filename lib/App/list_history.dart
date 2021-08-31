@@ -102,6 +102,8 @@ class _AsHistoryState extends State<AsHistory> {
                               backgroundImage:
                                   NetworkImage(snapshot.data![index].foto),
                             ),
+
+                            //DELETAR UMA HISTORIA
                             trailing: IconButton(
                               icon: Icon(Icons.delete),
                               color: Colors.red,
@@ -111,10 +113,11 @@ class _AsHistoryState extends State<AsHistory> {
                               },
                             ),
                             onTap: () {
+                              final foto = snapshot.data![index].foto;
                               final titulo = snapshot.data![index].nome;
                               final corpo = snapshot.data![index].descricao;
 
-                              history.setHistory(titulo, corpo);
+                              history.setHistory(titulo, corpo, foto);
 
                               Navigator.push(
                                   context,
@@ -128,6 +131,7 @@ class _AsHistoryState extends State<AsHistory> {
                   },
                 );
               }
+              // CIRCULO DE CARREGAR 
               return Center(
                 child: CircularProgressIndicator(
                   backgroundColor: Colors.red,
@@ -135,6 +139,8 @@ class _AsHistoryState extends State<AsHistory> {
               );
             }),
       ),
+
+      // BUTTON DE ADICONAR UMA HISTORIA
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.red[900],
         child: Icon(Icons.add),

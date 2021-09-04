@@ -61,7 +61,8 @@ class _AddHistoryState extends State<AddHistory> {
         preferredSize: Size.fromHeight(50),
         child: AppBar(
           backgroundColor: Colors.grey[900],
-          title: Text(
+
+          title: history.idHistory.value == ""? Text(
             'Adicionar uma História',
             style: GoogleFonts.eater(
               textStyle: TextStyle(
@@ -69,8 +70,10 @@ class _AddHistoryState extends State<AddHistory> {
                 fontSize: 16,
               ),
             ),
-          ),
+          ): Text("Editar História"),
           actions: <Widget>[
+
+            //BUTTON SALVE
             IconButton(
               icon: const Icon(Icons.save),
               onPressed: () async {

@@ -1,10 +1,11 @@
 import 'package:application_history_dark/App/controller/history_controller.dart';
-import 'package:application_history_dark/App/show_history.dart';
+import 'package:application_history_dark/App/views/show_history.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' as Get;
 import 'package:google_fonts/google_fonts.dart';
-import 'models/list_model.dart';
+import '../models/list_model.dart';
+import 'add_historys.dart';
 
 class AsHistory extends StatefulWidget {
   @override
@@ -83,7 +84,6 @@ class _AsHistoryState extends State<AsHistory> {
                         top: 10,
                       ),
                       child: Material(
-                        //elevation: 20,
                         // click na historia para ver ela completa
                         child: Ink(
                           color: Colors.grey[900],
@@ -97,27 +97,82 @@ class _AsHistoryState extends State<AsHistory> {
                                     fontStyle: FontStyle.italic),
                               ),
                             ),
+
                             leading: CircleAvatar(
                               backgroundColor: Colors.transparent,
                               backgroundImage:
                                   NetworkImage(snapshot.data![index].foto),
                             ),
 
-                            //DELETAR UMA HISTORIA
-                            trailing: IconButton(
-                              icon: Icon(Icons.delete),
-                              color: Colors.red,
-                              onPressed: () async {
-                                final id = snapshot.data![index].id;
-                                await deletarHistory(id);
-                              },
-                            ),
+                            // EDITAR UMA HISTORIA
+                            trailing: Container(
+                                width: 100,
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                        icon: Icon(Icons.edit),
+                                        color: Colors.green,
+                                        onPressed: () {
+                                          final foto =
+                                              snapshot.data![index].foto;
+                                          final titulo =
+                                              snapshot.data![index].nome;
+                                          final corpo =
+                                              snapshot.data![index].descricao;
+                                          final id = snapshot.data![index].id;
+
+                                          history.setHistory(
+                                              titulo, corpo, foto, id);
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      AddHistory()));
+                                        }),
+
+                                    //DELETAR UMA HISTORIA
+                                    IconButton(
+                                      icon: Icon(Icons.delete),
+                                      color: Colors.red,
+                                      onPressed: (){
+                                        
+                                        showDialog(context: context, 
+                                        builder: (ctx) =>  AlertDialog(
+                                          title: Text('Deletar História'),
+                                          content: Text("Certeza?"),
+                                          actions: <Widget> [
+                                            ElevatedButton(
+                                              onPressed: (){
+                                                Navigator.of(context).pop();
+                                              },
+                                               child: Text('Não')),
+                                               ElevatedButton(
+                                              onPressed: ()async{
+                                                final id = snapshot.data![index].id;
+                                                await deletarHistory(id);
+                                                Navigator.of(context).pop();
+                                              },
+                                               child: Text('Sim'))
+                                          ],
+                                        )
+                                        );
+
+
+
+
+
+                                        
+                                      },
+                                    )
+                                  ],
+                                )),
                             onTap: () {
                               final foto = snapshot.data![index].foto;
                               final titulo = snapshot.data![index].nome;
                               final corpo = snapshot.data![index].descricao;
+                              final id = snapshot.data![index].id;
 
-                              history.setHistory(titulo, corpo, foto);
+                              history.setHistory(titulo, corpo, foto, id);
 
                               Navigator.push(
                                   context,
@@ -131,7 +186,7 @@ class _AsHistoryState extends State<AsHistory> {
                   },
                 );
               }
-              // CIRCULO DE CARREGAR 
+              // CIRCULO DE CARREGAR
               return Center(
                 child: CircularProgressIndicator(
                   backgroundColor: Colors.red,
@@ -145,6 +200,7 @@ class _AsHistoryState extends State<AsHistory> {
         backgroundColor: Colors.red[900],
         child: Icon(Icons.add),
         onPressed: () {
+          history.clearHistory();
           Navigator.of(context).pushNamed('/AddHistory');
         },
       ),

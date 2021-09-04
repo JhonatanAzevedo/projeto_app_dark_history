@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart' as Get;
 import 'package:google_fonts/google_fonts.dart';
 
-import 'controller/history_controller.dart';
+import '../controller/history_controller.dart';
 
 class ShowHistory extends StatelessWidget {
   @override

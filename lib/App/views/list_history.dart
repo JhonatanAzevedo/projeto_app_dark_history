@@ -1,10 +1,8 @@
 import 'package:application_history_dark/App/controller/history_controller.dart';
 import 'package:application_history_dark/App/views/show_history.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' as Get;
 import 'package:google_fonts/google_fonts.dart';
-import '../models/list_model.dart';
 import 'add_historys.dart';
 
 class AsHistory extends StatelessWidget {
@@ -157,7 +155,7 @@ class AsHistory extends StatelessWidget {
         backgroundColor: Colors.red[900],
         child: Icon(Icons.add),
         onPressed: () {
-          history.clearHistory();
+          history.clearHistory(); // funçao de limpar os dados antes de adicionar uma nova historia
           Navigator.of(context).pushNamed('/AddHistory');
         },
       ),

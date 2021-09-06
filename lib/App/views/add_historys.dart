@@ -9,8 +9,7 @@ class AddHistory extends StatefulWidget {
 }
 
 class _AddHistoryState extends State<AddHistory> {
-
-
+  final formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final history =
@@ -22,7 +21,7 @@ class _AddHistoryState extends State<AddHistory> {
           backgroundColor: Colors.grey[900],
           title: history.idHistory.value == ""
               ? Text(
-                  'Adicionar uma História',
+                  'Adicione sua História',
                   style: GoogleFonts.eater(
                     textStyle: TextStyle(
                       color: Colors.white,
@@ -46,21 +45,26 @@ class _AddHistoryState extends State<AddHistory> {
               onPressed: () {
                 final title = history.titleHistory.value;
                 final body = history.bodyHistory.value;
+                final foto = history.fotoHistory.value;
 
-                if (history.idHistory.value == "") {
+                if (formkey.currentState?.validate() == false) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Historia adicionada')));
-                   history.addList(title, body);
+                        const SnackBar(content: Text('Por favor complete os campos!')));
+
                 } else {
-                  final id = history.idHistory.value;
+                  if (history.idHistory.value == "") {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Historia adicionada')));
+                    history.addList(title, body, foto);
+                  } else {
+                    final id = history.idHistory.value;
 
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Historia editada')));
-                  history.editList(title, body, id);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Historia editada')));
+                    history.editList(title, body, id, foto);
+                  }
+                  Navigator.of(context).pop();
                 }
-
-
-                Navigator.of(context).pop();
               },
             )
           ],
@@ -70,44 +74,89 @@ class _AddHistoryState extends State<AddHistory> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         color: Colors.grey[400],
-        padding: EdgeInsets.all(10),
-        child: Form(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              TextFormField(
-                initialValue: history.titleHistory.value,
-                decoration: InputDecoration(
-                  hintText: "Titulo da História",
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.black)),
-                ),
-                onChanged: (title) {
-                  history.setTitle(title);
-                },
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextFormField(
-                initialValue: history.bodyHistory.value,
-                keyboardType: TextInputType.multiline,
-                decoration: InputDecoration(
-                    hintText: "escreva sua história",
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 1,
-                        color: Colors.black,
+        padding: EdgeInsets.only(left: 10, right: 10),
+        child: ListView(
+          children: 
+            [Form(
+              key: formkey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                   SizedBox(
+                    height: 10,
+                  ),
+                  // TITULO DA HISTORIA QUANDO ADICIONAR
+                  TextFormField(
+                    validator: (text) {
+                      if (text == null || text.isEmpty) {
+                        return "esse campo nao pode ser nulo";
+                      }
+                    },
+                    initialValue: history.titleHistory.value,
+                    decoration: InputDecoration(
+                      labelText: "Titulo da História",
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(width: 1, color: Colors.black)),
+                    ),
+                    onChanged: (title) {
+                      history.setTitle(title);
+                    },
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+        
+                  // CORPO DA HISTORIA QUANDO ADICIONAR
+                  TextFormField(
+                    validator: (text) {
+                      if (text == null || text.isEmpty) {
+                        return "esse campo nao pode ser nulo";
+                      }
+                    },
+                    initialValue: history.bodyHistory.value,
+                    keyboardType: TextInputType.multiline,
+                    decoration: InputDecoration(
+                        labelText: "escreva sua história",
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            width: 1,
+                            color: Colors.black,
+                          ),
+                        )),
+                    maxLines: 15,
+                    onChanged: (body) {
+                      history.setBody(body);
+                    },
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  // IMAGEM DA HISTORIA QUANDO ADICIONAR
+                  TextFormField(
+                    validator: (text) {
+                      if (text == null || text.isEmpty) {
+                        return "esse campo nao pode ser nulo";
+                      }
+                    },
+                    initialValue: history.fotoHistory.value,
+                    decoration: InputDecoration(
+                      labelText: "coloque a Url da sua imagem",
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Colors.black,
+                        ),
                       ),
-                    )),
-                maxLines: 6,
-                onChanged: (body) {
-                  history.setBody(body);
-                },
+                    ),
+                    onChanged: (foto) {
+                      history.setFoto(foto);
+                    },
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

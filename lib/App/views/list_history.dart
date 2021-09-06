@@ -39,7 +39,9 @@ class AsHistory extends StatelessWidget {
           }, // pegando a funçao que vai trazer meu conteudo
           builder: (history) {
             return 
-            history.listHistory.isEmpty? Center(child: CircularProgressIndicator()):
+            history.listHistory.isEmpty? Center(child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation(Colors.red,), 
+            )):
             ListView.builder(
               itemCount: history.listHistory.length,
               itemBuilder: (context, index) {

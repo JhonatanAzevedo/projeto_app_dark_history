@@ -28,6 +28,13 @@ class HistoryController extends GetxController {
     titleHistory.value = title;
   }
 
+// set foto
+  void setFoto(foto){
+    fotoHistory.value = foto;
+
+  }
+
+ // funaçao de limpa historia
   void clearHistory(){
     titleHistory.value = "";
     bodyHistory.value = "";
@@ -41,13 +48,13 @@ void getList() async{
    listHistory.assignAll(response);
 }
 
-void addList(String title, String body) async{
-   await addHistorys(title, body);
+void addList(String title, String body, String foto) async{
+   await addHistorys(title, body, foto);
    getList();
 }
 
-void editList(String title, String body, String id) async{
-   await editHistory(title, body, id);
+void editList(String title, String body, String id, String foto) async{
+   await editHistory(title, body, id, foto);
    getList();
 }
 
@@ -92,15 +99,14 @@ void deletList(String id) async{
   }
 
   // ADICIONAR HISTÓRIA
-  Future<RespModel> addHistorys(String title, String body) async {
+  Future<RespModel> addHistorys(String title, String body, String foto) async {
     final dio = Dio();
     try {
       var response = await dio
           .post("https://still-hollows-82868.herokuapp.com/filme/add", data: {
         "nome": title,
         "descricao": body,
-        "foto":
-            "https://cdn.pixabay.com/photo/2021/08/19/07/16/woman-6557258_960_720.png",
+        "foto": foto,
         "elenco": "-",
       });
 
@@ -111,7 +117,7 @@ void deletList(String id) async{
   }
 
 //EDITAR HISTÓRIA
-  Future<RespModel> editHistory(String title, String body, String id) async {
+  Future<RespModel> editHistory(String title, String body, String id, String foto) async {
     final dio = Dio();
     try {
       var response = await dio
@@ -119,8 +125,7 @@ void deletList(String id) async{
         "id": id,
         "nome": title,
         "descricao": body,
-        "foto":
-            "https://cdn.pixabay.com/photo/2021/08/19/07/16/woman-6557258_960_720.png",
+        "foto": foto,
         "elenco": "-",
       });
       return RespModel.fromJson(response.data);

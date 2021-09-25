@@ -1,4 +1,6 @@
+import 'package:application_history_dark/App/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
@@ -50,8 +52,7 @@ class _HomePageState extends State<HomePage> {
           // butao para ir para todas historias
           ElevatedButton(
             onPressed: () {
-              Navigator.of(context).pushNamed(
-                  '/list'); //<= usando o pushNamed ele vem com botam de volta
+              Get.toNamed('/list'); //<= usando o pushNamed ele vem com botam de volta
             },
             child: Container(
               child: Text(

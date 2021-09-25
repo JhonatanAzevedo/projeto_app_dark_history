@@ -1,9 +1,9 @@
 import 'package:application_history_dark/App/controller/history_controller.dart';
-import 'package:application_history_dark/App/views/show_history.dart';
+import 'package:application_history_dark/App/ui/android/show_history/show_history.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' as Get;
 import 'package:google_fonts/google_fonts.dart';
-import 'add_historys.dart';
+import '../add_history/add_historys.dart';
 
 class AsHistory extends StatelessWidget {
   final history =
@@ -137,10 +137,8 @@ class AsHistory extends StatelessWidget {
 
                           history.setHistory(titulo, corpo, foto, id);
 
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ShowHistory()));
+                         Get.Get.toNamed('/show_history');
+                          
                         },
                       ),
                     ),
@@ -158,7 +156,7 @@ class AsHistory extends StatelessWidget {
         child: Icon(Icons.add),
         onPressed: () {
           history.clearHistory(); // funçao de limpar os dados antes de adicionar uma nova historia
-          Navigator.of(context).pushNamed('/AddHistory');
+          Get.Get.toNamed('/add_history');
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndTop,

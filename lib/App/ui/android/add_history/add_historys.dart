@@ -48,9 +48,8 @@ class _AddHistoryState extends State<AddHistory> {
                 final foto = history.fotoHistory.value;
 
                 if (formkey.currentState?.validate() == false) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Por favor complete os campos!')));
-
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text('Por favor complete os campos!')));
                 } else {
                   if (history.idHistory.value == "") {
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -76,14 +75,14 @@ class _AddHistoryState extends State<AddHistory> {
         color: Colors.grey[400],
         padding: EdgeInsets.only(left: 10, right: 10),
         child: ListView(
-          children: 
-            [Form(
+          children: [
+            Form(
               key: formkey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                   SizedBox(
+                  SizedBox(
                     height: 10,
                   ),
                   // TITULO DA HISTORIA QUANDO ADICIONAR
@@ -97,7 +96,8 @@ class _AddHistoryState extends State<AddHistory> {
                     decoration: InputDecoration(
                       labelText: "Titulo da História",
                       border: OutlineInputBorder(
-                          borderSide: BorderSide(width: 1, color: Colors.black)),
+                          borderSide:
+                              BorderSide(width: 1, color: Colors.black)),
                     ),
                     onChanged: (title) {
                       history.setTitle(title);
@@ -106,7 +106,7 @@ class _AddHistoryState extends State<AddHistory> {
                   SizedBox(
                     height: 10,
                   ),
-        
+
                   // CORPO DA HISTORIA QUANDO ADICIONAR
                   TextFormField(
                     validator: (text) {

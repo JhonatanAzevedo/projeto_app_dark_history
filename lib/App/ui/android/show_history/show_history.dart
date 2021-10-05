@@ -6,7 +6,7 @@ import '../../../controller/history_controller.dart';
 class ShowHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-  final width = MediaQuery.of(context).size.width / 100;
+  /* final width = MediaQuery.of(context).size.width / 100; */
   final height = MediaQuery.of(context).size.height / 100;
   final history = Get.Get.put(HistoryController());
 
@@ -14,7 +14,7 @@ class ShowHistory extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.grey[900],
         title: Text(
-          'Dark Historys',
+          'Dark History',
           style: GoogleFonts.eater(
               textStyle: TextStyle(
                 color: Colors.white,

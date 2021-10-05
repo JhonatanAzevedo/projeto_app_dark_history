@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.application_history_dark">
+   <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="Dark History"
         android:icon="@mipmap/ic_launcher">

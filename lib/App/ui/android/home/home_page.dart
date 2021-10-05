@@ -2,14 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class HomePage extends StatelessWidget {
   Widget _bory(double width, double height) {
     return SingleChildScrollView(
       child: Column(
@@ -20,12 +13,9 @@ class _HomePageState extends State<HomePage> {
           Container(
             height: height * 35,
             decoration: BoxDecoration(
-              image:  DecorationImage(
-                image: AssetImage(
-              'assets/images/logo.jpg'),
-              fit: BoxFit.fill
-             )
-            ),
+                image: DecorationImage(
+                    image: AssetImage('assets/images/logo.jpg'),
+                    fit: BoxFit.fill)),
           ),
           // texto do meio
           Text(
@@ -36,15 +26,14 @@ class _HomePageState extends State<HomePage> {
             textAlign: TextAlign.center,
           ),
           Padding(
-            padding: const EdgeInsets.only(top:10, left: 15, right: 15),
-
+            padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
             child: Text(
                 "Muito antes da escrita, a humanidade já contava histórias. "
                 "Uma das emoções humanas mais fortes é o medo e quando o vivenciamos em uma situação fictícia "
                 "tendemos a melhor lidar com nossos problemas na vida real; bem parecido com as descargas de adrenalina "
                 "em situações que jamais nos imaginamos, inclusive catástrofes, que nos fazem realizar feitos que normalmente não consideraríamos possíveis. "
                 "começe ja sua jornada em varias historias reais ou fictícias, contadas pelos nossos usuarios "
-                "e aproveite e adicione a sua historia de terror para que outras pessoas possam ler.",
+                "e aproveite e adicione a sua história de terror para que outras pessoas possam ler.",
                 style: GoogleFonts.smythe(
                   textStyle: TextStyle(
                       color: Colors.grey[600],
@@ -57,7 +46,8 @@ class _HomePageState extends State<HomePage> {
           // butao para ir para todas historias
           TextButton(
             onPressed: () {
-              Get.toNamed('/list'); //<= usando o pushNamed ele vem com botao de volta
+              Get.toNamed(
+                  '/list'); //<= usando o pushNamed ele vem com botao de volta
             },
             child: Container(
               child: Text(
@@ -79,15 +69,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-  final width = MediaQuery.of(context).size.width / 100;
-  final height = MediaQuery.of(context).size.height / 100;
+    final width = MediaQuery.of(context).size.width / 100;
+    final height = MediaQuery.of(context).size.height / 100;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50),
         child: AppBar(
           backgroundColor: Colors.grey[900],
           title: Text(
-            'Dark Historys',
+            'Dark History',
             style: GoogleFonts.eater(
               textStyle: TextStyle(color: Colors.white, fontSize: 20),
             ),
@@ -98,7 +88,7 @@ class _HomePageState extends State<HomePage> {
         Container(
           color: Colors.black,
         ),
-        _bory(width,height),
+        _bory(width, height),
       ]),
     );
   }

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' as Get;
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../controller/history_controller.dart';
 
 class ShowHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final history = Get.Get.put(HistoryController());
+  final width = MediaQuery.of(context).size.width / 100;
+  final height = MediaQuery.of(context).size.height / 100;
+  final history = Get.Get.put(HistoryController());
 
     return Scaffold(
       appBar: AppBar(
@@ -29,12 +30,12 @@ class ShowHistory extends StatelessWidget {
         child: ListView(
           children: 
             [Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 10),
+                  padding: const EdgeInsets.only(top: 5, bottom: 10),
                   child: Container(
-                    width: 200,
-                    height: 300,
+                    height: height * 50,
                     child: Image.network("${history.fotoHistory.value}",
                         fit: BoxFit.fill),
                   ),
@@ -43,12 +44,15 @@ class ShowHistory extends StatelessWidget {
                 //TITULO DA HISTORIA
                 Padding(
                   padding: const EdgeInsets.all(10),
-                  child: Text(
-                    "${history.titleHistory.value}",
-                    style: GoogleFonts.eater(
-                      textStyle: TextStyle(color: Colors.red[800], fontSize: 20),
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "${history.titleHistory.value}",
+                      style: GoogleFonts.eater(
+                        textStyle: TextStyle(color: Colors.red[800], fontSize: 20),
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
                 ),
         

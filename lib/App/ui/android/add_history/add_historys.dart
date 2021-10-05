@@ -17,7 +17,7 @@ class _AddHistoryState extends State<AddHistory> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50),
-        child: AppBar(
+        child: AppBar(  
           backgroundColor: Colors.grey[900],
           title: history.idHistory.value == ""
               ? Text(

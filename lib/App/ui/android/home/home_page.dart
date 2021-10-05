@@ -1,4 +1,3 @@
-import 'package:application_history_dark/App/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,17 +10,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Widget _bory() {
+  Widget _bory(double width, double height) {
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           //imagem da logo
-          Image.asset(
-            'assets/images/logo.jpg',
+          Container(
+            height: height * 35,
+            decoration: BoxDecoration(
+              image:  DecorationImage(
+                image: AssetImage(
+              'assets/images/logo.jpg'),
+              fit: BoxFit.fill
+             )
+            ),
           ),
-          SizedBox(height: 20),
           // texto do meio
           Text(
             "Por Que Contamos e Gostamos de Histórias de Terror?",
@@ -31,7 +36,7 @@ class _HomePageState extends State<HomePage> {
             textAlign: TextAlign.center,
           ),
           Padding(
-            padding: const EdgeInsets.only(top:10, bottom: 10, left: 15, right: 15),
+            padding: const EdgeInsets.only(top:10, left: 15, right: 15),
 
             child: Text(
                 "Muito antes da escrita, a humanidade já contava histórias. "
@@ -50,13 +55,13 @@ class _HomePageState extends State<HomePage> {
           ),
 
           // butao para ir para todas historias
-          ElevatedButton(
+          TextButton(
             onPressed: () {
-              Get.toNamed('/list'); //<= usando o pushNamed ele vem com botam de volta
+              Get.toNamed('/list'); //<= usando o pushNamed ele vem com botao de volta
             },
             child: Container(
               child: Text(
-                'TODAS HISTORIAS',
+                'LER HISTÓRIAS',
                 style: GoogleFonts.eater(
                   textStyle: TextStyle(
                     fontSize: 17,
@@ -66,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                 textAlign: TextAlign.center,
               ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -74,6 +79,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+  final width = MediaQuery.of(context).size.width / 100;
+  final height = MediaQuery.of(context).size.height / 100;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50),
@@ -91,7 +98,7 @@ class _HomePageState extends State<HomePage> {
         Container(
           color: Colors.black,
         ),
-        _bory(),
+        _bory(width,height),
       ]),
     );
   }
